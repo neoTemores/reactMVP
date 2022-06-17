@@ -9,34 +9,35 @@ import Settings from './components/settingspage/Settings'
 import About from './components/aboutpage/About'
 
 
-
 const App = () => {
   const [loggedIn, setLogIn] = useState(false)
   const [showModal, setShowModal] = useState(false)
-  const [currentUser, setCurrentUser] = useState([])
+  const [currentUser, setCurrentUser] = useState(null)
   const [allPosts, setAllPosts] = useState([])
 
+  useEffect(() => {
+    fetchAllPosts()
+  }, [])
+
+  const fetchAllPosts = async () => {
+    const res = await fetch('http://localhost:8000/api/posts')
+    const data = await res.json()
+    return setAllPosts(data)
+  }
+
   if (!loggedIn) {
-    return <LoginPage />
+    return <LoginPage setLogIn={setLogIn} setCurrentUser={setCurrentUser} />
   }
 
   const openModal = () => {
     setShowModal(true)
   }
 
-  useEffect(() => {
-    const fetchAllPosts = async () => {
-      const res = await fetch('http://localhost:8000/api/posts')
-      const data = await res.json()
-      return setAllPosts(data)
-    }
-    fetchAllPosts()
-  }, [allPosts])
 
   return (
     <>
 
-      <Navbar openModal={openModal} />
+      <Navbar openModal={openModal} setCurrentUser={setCurrentUser} currentUser={currentUser} />
       {showModal ? <Modal setShowModal={setShowModal} /> : null}
 
       <div className="App">

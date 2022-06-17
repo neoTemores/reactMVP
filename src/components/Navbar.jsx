@@ -1,11 +1,14 @@
 import React from 'react'
 import { Link } from "react-router-dom"
 
-const Navbar = ({ openModal }) => {
+const Navbar = ({ openModal, setLogIn, setCurrentUser, currentUser }) => {
     const handleLogOut = () => {
         // take in func from app.js to change 'logged in' state to false 
         //also to clear current logged in user info from state
-        console.log('logged out')
+        setLogIn(false)
+        setCurrentUser(() => {
+            return null
+        })
     }
 
 
@@ -33,6 +36,9 @@ const Navbar = ({ openModal }) => {
                     </li>
                     <li>
                         <Link to="#" className='nav-link' onClick={handleLogOut}>Log Out</Link>
+                    </li>
+                    <li>
+                        <Link to="/settings" className='nav-link currentUser'>@{currentUser.user_name}</Link>
                     </li>
                 </ul>
             </div>

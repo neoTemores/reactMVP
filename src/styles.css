@@ -15,11 +15,50 @@ body {
   display: grid;
   grid-template-columns: 20vw 70vw;
   grid-template-areas:
+    ".loginLogo .loginSiteName"
     ".nav-site-name .App"
     ".siteLinks .App";
   gap: 5%;
   height: fit-content;
 }
+
+.loginPage {
+  /* background-color: black; */
+}
+
+.loginLogo,
+.loginSiteName {
+  font-family: cursive;
+  font-size: 2rem;
+}
+
+
+.loginContainer {
+  z-index: 1;
+  width: 350px;
+  height: 220px;
+  background: lightgrey;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
+  position: relative;
+  animation: animate 0.3s;
+  box-shadow: 10px 10px 10px black;
+}
+
+.loginBtn {
+  cursor: pointer;
+}
+
+.createNewActBtn {
+  cursor: pointer;
+}
+
+.createActBtn {
+  cursor: pointer;
+}
+
 
 .navbar {
   color: white;
@@ -139,11 +178,12 @@ ul {
 
 
 li {
-  margin-bottom: 40%;
+  margin-bottom: 30%;
 }
 
 ul li:last-child {
-  margin-bottom: 25%;
+  margin-bottom: 15%;
+  font-family: cursive;
 }
 
 .nav-link {

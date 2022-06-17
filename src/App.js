@@ -1,24 +1,55 @@
-import logo from './logo.svg';
-import './App.css';
+import { Route, Routes } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import LoginPage from "./components/loginpage/LoginPage";
+import Navbar from "./components/Navbar";
+import Modal from "./components/newpostmodal/Modal.jsx"
+import Home from "./components/homepage/Home";
+import MyPosts from "./components/mypostspage/MyPosts";
+import Settings from './components/settingspage/Settings'
+import About from './components/aboutpage/About'
 
-function App() {
+
+
+const App = () => {
+  const [loggedIn, setLogIn] = useState(false)
+  const [showModal, setShowModal] = useState(false)
+  const [currentUser, setCurrentUser] = useState([])
+  const [allPosts, setAllPosts] = useState([])
+
+  if (!loggedIn) {
+    return <LoginPage />
+  }
+
+  const openModal = () => {
+    setShowModal(true)
+  }
+
+  useEffect(() => {
+    const fetchAllPosts = async () => {
+      const res = await fetch('http://localhost:8000/api/posts')
+      const data = await res.json()
+      return setAllPosts(data)
+    }
+    fetchAllPosts()
+  }, [allPosts])
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+
+      <Navbar openModal={openModal} />
+      {showModal ? <Modal setShowModal={setShowModal} /> : null}
+
+      <div className="App">
+
+        <Routes>
+          <Route exact path='/' element={<Home allPosts={allPosts} />} />
+          <Route exact path='/myPosts' element={<MyPosts />} />
+          <Route exact path='/settings' element={<Settings />} />
+          <Route exact path='/about' element={<About />} />
+
+        </Routes>
+      </div>
+    </>
   );
 }
 

@@ -1,0 +1,168 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  margin-top: 1%;
+  padding: 0;
+  /* background-color: gray; */
+  background-color: whitesmoke;
+
+}
+
+#root {
+  display: grid;
+  grid-template-columns: 20vw 70vw;
+  grid-template-areas:
+    ".nav-site-name .App"
+    ".siteLinks .App";
+  gap: 5%;
+  height: fit-content;
+}
+
+.navbar {
+  color: white;
+  gap: 30%;
+  padding: 1rem;
+  justify-self: center;
+  background-color: #333;
+  border-radius: 5px;
+  text-align: center;
+  height: fit-content;
+  box-shadow: 5px 5px 5px black;
+
+}
+
+.navbar a {
+  color: inherit;
+  text-decoration: none;
+  opacity: .5;
+}
+
+.App {
+  border: 5px solid darkgray;
+  font-size: 4rem;
+  border-radius: 5px;
+  height: 90vh;
+  overflow: auto;
+}
+
+
+.nav-site-name {
+  font-size: 3.8rem;
+  font-family: cursive;
+  color: whitesmoke;
+  opacity: 1;
+}
+
+.newPostBtn {
+  margin-top: 30%;
+  height: 100%;
+  width: 100%;
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 10px;
+  border: none;
+  box-shadow: 10px 10px 10px black;
+  opacity: .6;
+  font-size: 1.2rem;
+  transition: font-size .2s;
+  background: darkolivegreen;
+  color: white;
+  font-family: inherit
+}
+
+.newPostBtn:hover {
+  opacity: 1;
+  font-size: 1.5rem
+}
+
+.modalContainer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.7);
+}
+
+.newPostContainer {
+  z-index: 1;
+  width: 350px;
+  height: 220px;
+  background: lightgrey;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
+  position: relative;
+  animation: animate 0.3s;
+  box-shadow: 10px 10px 10px black;
+}
+
+.newPostCloseBtn {
+  position: absolute;
+  top: 7px;
+  right: 7px;
+  padding: 8px 11px;
+  background: crimson;
+  color: white;
+  font-weight: bold;
+  border: none;
+  outline: none;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+
+@keyframes animate {
+  from {
+    transform: scale(0.5);
+  }
+
+  to {
+    transform: scale(1);
+  }
+}
+
+ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  text-align: center;
+}
+
+
+li {
+  margin-bottom: 40%;
+}
+
+ul li:last-child {
+  margin-bottom: 25%;
+}
+
+.nav-link {
+  /* transition: opacity .2s ease; */
+  transition: font-size .2s;
+
+}
+
+.nav-link:hover {
+  opacity: 1;
+  font-size: 1.7rem;
+}
+
+.siteLinks {
+  height: fit-content;
+  margin-top: 40%;
+  font-size: 1.5rem;
+}
+
+.post {
+  font-size: 1.3rem;
+}

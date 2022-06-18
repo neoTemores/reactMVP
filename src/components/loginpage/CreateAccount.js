@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import ReactDom from "react-dom";
 
-const CreateAccount = () => {
+const CreateAccount = ({ setLoading, setShowLogin }) => {
 
     const [formData, setFormData] = useState({
         First_Name: '',
@@ -23,6 +23,7 @@ const CreateAccount = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault()
+        setLoading(true)
         for (const key in formData) {
             if (formData[key].length === 0) {
                 return alert(`All fields are required, missing ${key}`)
@@ -68,8 +69,10 @@ const CreateAccount = () => {
             body: JSON.stringify(formData),
         })
             .then(response => response.json())
-            .then(data => {
-                console.log('Success:', data)
+            .then(() => {
+                setLoading(false)
+                alert('Account successfuly create. Please log in!')
+                return setShowLogin(true)
             })
             .catch((error) => {
                 console.error('Error:', error)

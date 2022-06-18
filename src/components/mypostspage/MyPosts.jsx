@@ -1,21 +1,30 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import IndividualPost from "./IndividualPost.js"
 
 const MyPosts = ({ currentUser }) => {
-    console.log(currentUser)
+
+    useEffect(() => {
+        fetchCurrentUserPosts()
+    }, [])
+
+    const [myPosts, setMyPosts] = useState([])
 
     const fetchCurrentUserPosts = async () => {
         try {
             let res = await fetch(`http://localhost:8000/api/posts/${currentUser.user_id}`)
             let data = await res.json()
-            console.log(data)
+            return setMyPosts(() => {
+                return data
+            })
         } catch (error) {
 
         }
     }
     return (
 
-
-        <div onClick={fetchCurrentUserPosts}>{currentUser.first_name}</div>
+        <div className="myPostsContainer">
+            <IndividualPost myPosts={myPosts} />
+        </div>
     )
 }
 

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import ReactDom from "react-dom";
 
 
-const Login = ({ setLogIn, setCurrentUser, setShowLogin }) => {
+const Login = ({ setLogIn, setCurrentUser, setShowLogin, setLoading }) => {
 
     const [loginData, setLoginData] = useState({
         userName: '',
@@ -12,6 +12,7 @@ const Login = ({ setLogIn, setCurrentUser, setShowLogin }) => {
 
     const handleSubmit = (e) => {
         e.preventDefault()
+        setLoading(true)
         const fetchAllUsers = async () => {
             const res = await fetch('http://localhost:8000/api/users')
             const data = await res.json()
@@ -22,11 +23,11 @@ const Login = ({ setLogIn, setCurrentUser, setShowLogin }) => {
     }
 
     const authenticateInput = (data) => {
-        console.log(data)
         for (let i = 0; i < data.length; i++) {
             const current = data[i];
             if (current.user_name === loginData.userName && current.password === loginData.password) {
 
+                setLoading(false)
                 setLogIn(true)
                 return setCurrentUser(() => {
                     return current
@@ -34,7 +35,7 @@ const Login = ({ setLogIn, setCurrentUser, setShowLogin }) => {
             }
         }
 
-        return console.log('login Failed')
+        return alert('Unable to authenticate Username and Password.')
     }
 
     const handleChange = (e) => {

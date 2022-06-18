@@ -2,6 +2,10 @@
   box-sizing: border-box;
 }
 
+.loading {
+  cursor: wait !important
+}
+
 body {
   margin: 0;
   margin-top: 1%;
@@ -47,15 +51,15 @@ body {
   box-shadow: 10px 10px 10px black;
 }
 
-.loginBtn {
+.loginBtn:hover {
   cursor: pointer;
 }
 
-.createNewActBtn {
+.createNewActBtn:hover {
   cursor: pointer;
 }
 
-.createActBtn {
+.createActBtn:hover {
   cursor: pointer;
 }
 
@@ -100,7 +104,6 @@ body {
   height: 100%;
   width: 100%;
   padding: 10px;
-  cursor: pointer;
   border-radius: 10px;
   border: none;
   box-shadow: 10px 10px 10px black;
@@ -110,6 +113,10 @@ body {
   background: darkolivegreen;
   color: white;
   font-family: inherit
+}
+
+.newPostBtn:hover {
+  cursor: pointer;
 }
 
 .newPostBtn:hover {
@@ -149,15 +156,17 @@ body {
   top: 7px;
   right: 7px;
   padding: 8px 11px;
-  background: crimson;
+  background: darkred;
   color: white;
   font-weight: bold;
   border: none;
   outline: none;
   border-radius: 10px;
-  cursor: pointer;
 }
 
+.newPostCloseBtn:hover {
+  cursor: pointer;
+}
 
 @keyframes animate {
   from {
@@ -203,6 +212,93 @@ ul li:last-child {
   font-size: 1.5rem;
 }
 
+.postUsername {
+  font-size: 1.1rem;
+  font-weight: bold;
+  font-family: fantasy;
+  padding-left: 1%;
+  margin-bottom: 0;
+  color: #333;
+  cursor: default;
+  /* color: rgb(41, 78, 2); */
+  /* opacity: .5; */
+}
+
 .post {
   font-size: 1.3rem;
+  transition: font-size .2s;
+  margin: 0;
+}
+
+.singlePost {
+  font-size: 1.3rem;
+  margin: 0;
+  cursor: default;
+}
+
+.post:hover {
+  font-size: 1.35rem;
+}
+
+.indivPostDiv {
+  border-top: 2px solid darkgray;
+  border-bottom: 2px solid darkgray;
+  margin-bottom: 3%;
+  box-shadow: 0px 6px #333;
+  padding: 1%;
+  /* padding: 1%; */
+  /* padding-right: 1%; */
+}
+
+.indivPostDiv:hover {
+  cursor: pointer;
+}
+
+.singlePostDiv {
+  border-top: 2px solid darkgray;
+  border-bottom: 2px solid darkgray;
+  margin-bottom: 3%;
+  box-shadow: 0px 6px #333;
+  padding: 1%;
+}
+
+.postControlsDiv {
+  display: flex;
+  justify-content: space-between;
+}
+
+.postControlsDiv button {
+  padding: 8px 11px;
+  font-size: .8rem;
+  opacity: .5;
+  transition: font-size .2s;
+  transition: opacity .2s;
+  color: white;
+  font-weight: bold;
+  border: none;
+  outline: none;
+  border-radius: 10px;
+  box-shadow: 2px 2px #333;
+}
+
+.postControlsDiv button:hover {
+  cursor: pointer;
+}
+
+.editPostBtn {
+  background: darkolivegreen;
+}
+
+.editPostBtn:hover {
+  font-size: 1rem;
+  opacity: 1;
+}
+
+.deletePostBtn {
+  background: darkred;
+}
+
+.deletePostBtn:hover {
+  font-size: 1rem;
+  opacity: 1;
 }

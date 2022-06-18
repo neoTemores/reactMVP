@@ -1,11 +1,14 @@
 import React from "react"
-const Home = (props) => {
+const Home = ({ allPosts }) => {
     return (
         <>
 
             {
-                props.allPosts.map((post) => (
-                    <p key={post.post_id} className="post"> * {post.post_content}</p>
+                allPosts.map((post) => (
+                    <div className='indivPostDiv' key={post.post_id} id={post.user_id}>
+                        <p className='postUsername'>@{post.user_name}</p>
+                        <p className="post"> * {post.post_content}</p>
+                    </div>
                 ))
             }
 

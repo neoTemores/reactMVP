@@ -10,10 +10,18 @@ import About from './components/aboutpage/About'
 
 
 const App = () => {
+  const [loading, setLoading] = useState(false)
   const [loggedIn, setLogIn] = useState(false)
   const [showModal, setShowModal] = useState(false)
   const [currentUser, setCurrentUser] = useState(null)
   const [allPosts, setAllPosts] = useState([])
+
+  let root = document.getElementById('root')
+  let portal = document.getElementById('portal')
+
+  loading ? root.classList.add('loading') : root.classList.remove('loading')
+  loading ? portal.classList.add('loading') : portal.classList.remove('loading')
+
 
   useEffect(() => {
     fetchAllPosts()
@@ -26,7 +34,7 @@ const App = () => {
   }
 
   if (!loggedIn) {
-    return <LoginPage setLogIn={setLogIn} setCurrentUser={setCurrentUser} />
+    return <LoginPage setLogIn={setLogIn} setCurrentUser={setCurrentUser} setLoading={setLoading} />
   }
 
   const openModal = () => {
@@ -39,7 +47,6 @@ const App = () => {
 
       <Navbar openModal={openModal} setCurrentUser={setCurrentUser} currentUser={currentUser} />
       {showModal ? <Modal setShowModal={setShowModal} /> : null}
-
       <div className="App">
 
         <Routes>

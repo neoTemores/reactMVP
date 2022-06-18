@@ -3,7 +3,7 @@ const pool = require('./connection');
 const getAllPosts = async (_, res) => {
     try {
         let client = await pool.connect();
-        let data = await client.query('SELECT * FROM posts');
+        let data = await client.query('SELECT posts.post_id, posts.post_content, posts.user_id, users.user_id AS id, users.user_name from posts JOIN users on posts.user_id = users.user_id ORDER BY posts.post_id DESC;');
         res.json(data.rows)
         client.release();
 
@@ -18,9 +18,9 @@ const getPostById = async (req, res) => {
     try {
 
         let client = await pool.connect();
-        let data = await client.query(`SELECT * FROM posts where post_id = $1`, [id]);
-        res.json(data.rows);
-        client.release();
+        let data = await client.query('SELECT posts.post_id, posts.post_content, posts.user_id, users.user_id AS id, users.user_name from posts JOIN users ON posts.user_id = users.user_id WHERE posts.user_id = $1 ORDER BY posts.post_id DESC;', [id])
+        res.json(data.rows)
+        client.release()
 
     } catch (error) {
         console.log(error)

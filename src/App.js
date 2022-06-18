@@ -44,7 +44,7 @@ const App = () => {
 
         <Routes>
           <Route exact path='/' element={<Home allPosts={allPosts} />} />
-          <Route exact path='/myPosts' element={<MyPosts />} />
+          <Route exact path='/myPosts' element={<MyPosts currentUser={currentUser} />} />
           <Route exact path='/settings' element={<Settings />} />
           <Route exact path='/about' element={<About />} />
 

@@ -4,17 +4,13 @@ import ReactDom from "react-dom";
 const CreateAccount = () => {
 
     const [formData, setFormData] = useState({
-        firstName: '',
-        lastName: '',
+        First_Name: '',
+        Last_Name: '',
         email: '',
         userName: '',
         password: '',
         verifyPassword: ''
     })
-
-    const handleSubmit = (e) => {
-        e.preventDefault()
-    }
 
     const handleChange = (e) => {
         setFormData((prevFormData) => {
@@ -25,6 +21,76 @@ const CreateAccount = () => {
         })
     }
 
+    const handleSubmit = (e) => {
+        e.preventDefault()
+        for (const key in formData) {
+            if (formData[key].length === 0) {
+                return alert(`All fields are required, missing ${key}`)
+            }
+        }
+        return verifyPasswordsMatch()
+    }
+
+    const verifyPasswordsMatch = () => {
+        if (formData.password === formData.verifyPassword) {
+            return fetchAllUsers()
+        }
+
+        else {
+            return alert('Passwords do not match')
+        }
+    }
+
+    const fetchAllUsers = async () => {
+        const res = await fetch('http://localhost:8000/api/users')
+        const data = await res.json()
+        return checkForTakenUserName(data)
+    }
+
+    const checkForTakenUserName = (data) => {
+
+        for (let i = 0; i < data.length; i++) {
+            const current = data[i];
+            if (formData.userName === current.user_name) {
+                return alert('Sorry, that User Name is already taken!')
+            }
+        }
+
+        return createNewUser()
+    }
+
+    function createNewUser() {
+        fetch('http://localhost:8000/api/users/create', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(formData),
+        })
+            .then(response => response.json())
+            .then(data => {
+                console.log('Success:', data)
+            })
+            .catch((error) => {
+                console.error('Error:', error)
+            });
+    }
+
+
+
+
+    const handleReset = () => {
+        setFormData(() => {
+            return {
+                First_Name: '',
+                Last_Name: '',
+                email: '',
+                userName: '',
+                password: '',
+                verifyPassword: ''
+            }
+        })
+    }
 
     return ReactDom.createPortal(
         <div className='modalContainer' >
@@ -34,17 +100,17 @@ const CreateAccount = () => {
                         className="loginData"
                         type='text'
                         placeholder='First Name'
-                        name='firstName'
+                        name='First_Name'
                         onChange={handleChange}
-                        value={formData.firstName} /> <br />
+                        value={formData.First_Name} /> <br />
 
                     <input
                         className="loginData"
                         type='text'
                         placeholder='Last Name'
-                        name='lastName'
+                        name='Last_Name'
                         onChange={handleChange}
-                        value={formData.lastName} /> <br />
+                        value={formData.Last_Name} /> <br />
 
                     <input
                         className="loginData"
@@ -79,7 +145,7 @@ const CreateAccount = () => {
                     /> <br />
 
                     <input className="createActBtn" type='submit' value='Create Account' /> <br />
-                    <input className="restBtn" type='reset' />
+                    <input className="restBtn" type='reset' onClick={handleReset} />
                 </form>
             </div>
         </div>,

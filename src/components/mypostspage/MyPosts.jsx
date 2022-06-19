@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
 import IndividualPost from "./IndividualPost.js"
 
-const MyPosts = ({ currentUser }) => {
+const MyPosts = ({ currentUser, allPosts }) => {
 
     useEffect(() => {
         fetchCurrentUserPosts()
-    }, [])
+    }, [allPosts.length])
 
     const [myPosts, setMyPosts] = useState([])
 

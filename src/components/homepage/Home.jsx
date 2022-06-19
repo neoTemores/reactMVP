@@ -1,13 +1,18 @@
 import React from "react";
 import { useNavigate } from 'react-router-dom';
 
-const Home = ({ allPosts, setClickedUserPosts }) => {
+const Home = ({ allPosts, setClickedUserPosts, currentUser }) => {
 
     let navigate = useNavigate();
     let path = "/userPosts";
 
 
     const handleClick = (e) => {
+
+        if (+e.target.id === currentUser.user_id) {
+            return navigate('/myPosts')
+        }
+
         fetchClickedUserPosts(e.target.id)
     }
 

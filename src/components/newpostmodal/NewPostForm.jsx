@@ -1,13 +1,30 @@
 import React, { useState } from "react";
 
-const NewPostForm = () => {
+const NewPostForm = ({ setAllPosts, currentUser, setShowModal }) => {
     const [formData, setFormData] = useState({
         textContent: ""
     })
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        console.log(formData)
+        createNewPost()
+    }
+
+    const createNewPost = () => {
+        let postCreationData = {
+            postContent: formData.textContent,
+            userId: currentUser.user_id
+        }
+
+        fetch('api/posts/create', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(postCreationData)
+        })
+            .then(res => res.json())
+            .then(() => { setAllPosts([]) })
+            .then(() => { setShowModal(false) })
+            .catch(error => { console.error(error) })
     }
 
     const handleChange = (e) => {

@@ -60,9 +60,27 @@ const createNewUser = async (req, res) => {
     }
 }
 
+const createNewPost = async (req, res) => {
+    let postContent = req.body.postContent;
+    let userId = req.body.userId;
+
+    try {
+        let client = await pool.connect();
+        let data = await client.query('INSERT INTO posts (post_content, user_id) VALUES ($1, $2)', [postContent, userId])
+        res.json(data.rows)
+        client.release()
+
+    } catch (error) {
+        console.error(error);
+        res.send(error)
+    }
+}
+
+
 module.exports = {
     getAllPosts,
     getPostById,
     getAllUsers,
-    createNewUser
+    createNewUser,
+    createNewPost
 }

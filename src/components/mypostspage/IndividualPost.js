@@ -9,7 +9,7 @@ const IndividualPost = ({ myPosts }) => {
                     <button className='editPostBtn'>Edit</button> <button className='deletePostBtn'> X </button>
                 </div>
                 <p className='postUsername'>@{post.user_name}</p>
-                <p className='singlePost' >{post.post_content}</p>
+                <p className='singlePost' > * {post.post_content}</p>
             </div>)
 
     )

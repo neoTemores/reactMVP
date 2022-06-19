@@ -27,9 +27,10 @@ const App = () => {
 
   useEffect(() => {
     fetchAllPosts()
-  }, [])
+  }, [allPosts.length])
 
   const fetchAllPosts = async () => {
+    console.log('fetch all posts')
     const res = await fetch('http://localhost:8000/api/posts')
     const data = await res.json()
     return setAllPosts(data)
@@ -48,12 +49,12 @@ const App = () => {
     <>
 
       <Navbar openModal={openModal} setCurrentUser={setCurrentUser} currentUser={currentUser} />
-      {showModal ? <Modal setShowModal={setShowModal} /> : null}
+      {showModal ? <Modal setShowModal={setShowModal} setAllPosts={setAllPosts} currentUser={currentUser} /> : null}
       <div className="App">
 
         <Routes>
-          <Route exact path='/' element={<Home allPosts={allPosts} setClickedUserPosts={setClickedUserPosts} />} />
-          <Route exact path='/myPosts' element={<MyPosts currentUser={currentUser} />} />
+          <Route exact path='/' element={<Home allPosts={allPosts} setClickedUserPosts={setClickedUserPosts} currentUser={currentUser} />} />
+          <Route exact path='/myPosts' element={<MyPosts currentUser={currentUser} allPosts={allPosts} />} />
           <Route exact path='/userPosts' element={<UserPosts clickedUserPosts={clickedUserPosts} />} />
           <Route exact path='/settings' element={<Settings />} />
           <Route exact path='/about' element={<About />} />

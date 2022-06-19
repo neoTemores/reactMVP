@@ -30,6 +30,9 @@ app.get('/api/users', controller.getAllUsers);
 
 app.post('/api/users/create', controller.createNewUser);
 
+app.post('/api/posts/create', controller.createNewPost);
+
+
 
 app.use((_, res) => {
     res.status(404)

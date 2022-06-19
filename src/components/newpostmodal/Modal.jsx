@@ -2,7 +2,7 @@ import React, { useRef } from 'react';
 import ReactDom from "react-dom";
 import NewPostForm from "./NewPostForm"
 
-const Modal = ({ setShowModal }) => {
+const Modal = ({ setShowModal, setAllPosts, currentUser }) => {
 
     const modalRef = useRef();
     const closeModal = (e) => {
@@ -14,7 +14,7 @@ const Modal = ({ setShowModal }) => {
     return ReactDom.createPortal(
         <div className='modalContainer' ref={modalRef} onClick={closeModal}>
             <div className='newPostContainer'>
-                <NewPostForm />
+                <NewPostForm setAllPosts={setAllPosts} currentUser={currentUser} setShowModal={setShowModal} />
                 <button className='newPostCloseBtn' onClick={() => setShowModal(false)}> X </button>
             </div>
         </div>,

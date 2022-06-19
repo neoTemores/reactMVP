@@ -421,3 +421,22 @@ ul li:last-child {
 .react-confirm-alert-button-group button:last-child {
   background-color: darkred;
 }
+
+.settingsPageContainer {
+
+  width: 100%;
+  height: 100%;
+  border: 3px solid #73AD21;
+}
+
+.settingsFormContainer {
+  border: 3px solid blue;
+  padding: 5px;
+  margin: 5%;
+  margin-top: 0;
+}
+
+.settingsFormContainer form {
+  display: grid;
+  font-size: 2.5rem;
+}

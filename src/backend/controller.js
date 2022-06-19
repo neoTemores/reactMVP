@@ -104,7 +104,7 @@ const getSinglePostById = async (req, res) => {
 
 const updatePostById = async (req, res) => {
     let postId = req.params.id
-    let text = req.body.text
+    let text = req.body.textContent
     try {
         let client = await pool.connect()
         let data = await client.query('UPDATE posts SET post_content = $1 WHERE post_id = $2', [text, postId])

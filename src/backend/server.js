@@ -38,7 +38,6 @@ app.get('/api/singlepost/:id', controller.getSinglePostById)
 
 app.patch('/api/posts/:id', controller.updatePostById);
 
-
 app.use((_, res) => {
     res.status(404)
     res.setHeader('Content-type', 'text/plain')

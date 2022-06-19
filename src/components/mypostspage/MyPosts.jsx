@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import IndividualPost from "./IndividualPost.js"
+import UpdatePostModal from './UpdatePostModal'
 
 const MyPosts = ({ currentUser, allPosts, setAllPosts }) => {
 
@@ -8,6 +9,16 @@ const MyPosts = ({ currentUser, allPosts, setAllPosts }) => {
     }, [allPosts.length])
 
     const [myPosts, setMyPosts] = useState([])
+    const [postToUpdate, setPostToUpdate] = useState(null)
+    const [showUpdatePostModal, setShowUpdatePostModal] = useState(false)
+
+    useEffect(() => {
+        checkIfPostToUpdateIsAvail()
+    }, [postToUpdate])
+
+    const checkIfPostToUpdateIsAvail = () => {
+        if (postToUpdate) { return setShowUpdatePostModal(true) }
+    }
 
     const fetchCurrentUserPosts = async () => {
         try {
@@ -23,7 +34,9 @@ const MyPosts = ({ currentUser, allPosts, setAllPosts }) => {
     return (
 
         <div className="myPostsContainer">
-            <IndividualPost myPosts={myPosts} setAllPosts={setAllPosts} />
+            {showUpdatePostModal ? <UpdatePostModal postToUpdate={postToUpdate} setAllPosts={setAllPosts} setShowUpdatePostModal={setShowUpdatePostModal} /> : null}
+
+            <IndividualPost myPosts={myPosts} setAllPosts={setAllPosts} setShowUpdatePostModal={setShowUpdatePostModal} setPostToUpdate={setPostToUpdate} />
         </div>
     )
 }

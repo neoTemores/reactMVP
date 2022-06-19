@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400&display=swap');
+
 * {
   box-sizing: border-box;
 }
@@ -10,8 +12,15 @@ body {
   margin: 0;
   margin-top: 1%;
   padding: 0;
-  background-color: gray;
+  font-family: 'Poppins', sans-serif;
+  background-color: floralwhite;
   /* background-color: whitesmoke; */
+  background-color: gray;
+
+}
+
+.darkTheme {
+  background-color: gray;
 
 }
 
@@ -139,8 +148,8 @@ body {
 
 .newPostContainer {
   z-index: 1;
-  width: 350px;
-  height: 220px;
+  width: 480px;
+  height: 230px;
   background: gray;
   display: flex;
   align-items: center;
@@ -151,8 +160,28 @@ body {
   box-shadow: 10px 10px 10px black;
 }
 
+.newPostDiv {
+  height: fit-content;
+  margin-bottom: -25px;
+
+}
+
+.newPostForm {
+  /* padding-top: 10%; */
+  /* padding-bottom: -140px; */
+}
+
 .textareaNewPost {
   background-color: whitesmoke;
+  font-family: inherit;
+  font-size: 1.3rem;
+  text-align: center;
+  font-weight: bold;
+  height: 150px;
+  width: 400px;
+  border: none;
+  border: 3px solid darkgray;
+  border-radius: 5px;
 }
 
 textarea::placeholder {
@@ -240,16 +269,20 @@ ul li:last-child {
   margin: 0;
 }
 
+.post:hover {
+  font-size: 1.35rem;
+}
+
 .singlePost {
   font-size: 1.3rem;
   margin: 0;
   cursor: default;
 }
 
-.post:hover {
+.singlePost:hover {
   font-size: 1.35rem;
-
 }
+
 
 .indivPostDiv {
   border-top: 2px solid darkgray;

@@ -1,12 +1,9 @@
 import React from 'react';
 import { confirmAlert } from 'react-confirm-alert';
 
-const IndividualPost = ({ myPosts, setAllPosts }) => {
+const IndividualPost = ({ myPosts, setAllPosts, setShowUpdatePostModal, setPostToUpdate }) => {
 
     const handleDelete = (e) => {
-        // console.log(e.target)
-        // console.log(e.target.id)
-        // console.log(typeof +e.target.id)
 
         confirmAlert({
             title: 'Hold on !',
@@ -34,11 +31,27 @@ const IndividualPost = ({ myPosts, setAllPosts }) => {
 
     }
 
+    const handleEdit = (e) => {
+        fetchPostToUpdate(e.target.id)
+    }
+
+    const fetchPostToUpdate = (id) => {
+        fetch(`http://localhost:8000/api/singlepost/${id}`)
+            .then(res => res.json())
+            // .then(() => setShowUpdatePostModal(true))
+            .then(data => {
+                return setPostToUpdate(() => {
+                    return data
+                })
+            })
+            .catch(error => console.error(error))
+    }
+
     return (
         myPosts.map(post =>
             <div className='singlePostDiv' key={post.post_id} >
                 <div className='postControlsDiv'>
-                    <button id={post.post_id} className='editPostBtn'>Edit</button> <button id={post.post_id} className='deletePostBtn' onClick={handleDelete}> X </button>
+                    <button id={post.post_id} className='editPostBtn' onClick={handleEdit}>Edit</button> <button id={post.post_id} className='deletePostBtn' onClick={handleDelete}> X </button>
                 </div>
                 <p className='postUsername'>@{post.user_name}</p>
                 <p className='singlePost' > * {post.post_content}</p>

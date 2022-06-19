@@ -13,7 +13,7 @@ const getAllPosts = async (_, res) => {
     }
 }
 
-const getPostById = async (req, res) => {
+const getPostsById = async (req, res) => {
     let id = req.params.id
     try {
 
@@ -89,11 +89,40 @@ const deletePostById = async (req, res) => {
     }
 }
 
+const getSinglePostById = async (req, res) => {
+    let postId = req.params.id
+    try {
+        let client = await pool.connect()
+        let data = await client.query('SELECT * FROM posts WHERE post_id = $1', [postId])
+        res.json(data.rows)
+        client.release()
+
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+const updatePostById = async (req, res) => {
+    let postId = req.params.id
+    let text = req.body.text
+    try {
+        let client = await pool.connect()
+        let data = await client.query('UPDATE posts SET post_content = $1 WHERE post_id = $2', [text, postId])
+        res.json(data.rows)
+        client.release()
+    } catch (error) {
+        console.error(error);
+        res.send(error)
+    }
+}
+
 module.exports = {
     getAllPosts,
-    getPostById,
+    getPostsById,
     getAllUsers,
     createNewUser,
     createNewPost,
-    deletePostById
+    deletePostById,
+    getSinglePostById,
+    updatePostById
 }

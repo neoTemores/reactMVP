@@ -36,8 +36,8 @@ const NewPostForm = ({ setAllPosts, currentUser, setShowModal }) => {
         })
     }
     return (
-        <div>
-            <form onSubmit={handleSubmit}>
+        <div className="newPostDiv">
+            <form onSubmit={handleSubmit} className='newPostForm'>
                 <textarea
                     className="textareaNewPost"
                     name="textContent"
@@ -45,7 +45,7 @@ const NewPostForm = ({ setAllPosts, currentUser, setShowModal }) => {
                     onChange={handleChange}
                     rows="7"
                     cols="40"
-                    placeholder="Whats on your mind?"
+                    placeholder="What's on your mind?"
                 /> <br />
                 <input type='submit' value='Post' />
 

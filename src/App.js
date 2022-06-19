@@ -30,7 +30,6 @@ const App = () => {
   }, [allPosts.length])
 
   const fetchAllPosts = async () => {
-    console.log('fetch all posts')
     const res = await fetch('http://localhost:8000/api/posts')
     const data = await res.json()
     return setAllPosts(data)
@@ -54,7 +53,7 @@ const App = () => {
 
         <Routes>
           <Route exact path='/' element={<Home allPosts={allPosts} setClickedUserPosts={setClickedUserPosts} currentUser={currentUser} />} />
-          <Route exact path='/myPosts' element={<MyPosts currentUser={currentUser} allPosts={allPosts} />} />
+          <Route exact path='/myPosts' element={<MyPosts currentUser={currentUser} allPosts={allPosts} setAllPosts={setAllPosts} />} />
           <Route exact path='/userPosts' element={<UserPosts clickedUserPosts={clickedUserPosts} />} />
           <Route exact path='/settings' element={<Settings />} />
           <Route exact path='/about' element={<About />} />

@@ -32,6 +32,7 @@ app.post('/api/users/create', controller.createNewUser);
 
 app.post('/api/posts/create', controller.createNewPost);
 
+app.delete('/api/posts/:id', controller.deletePostById);
 
 
 app.use((_, res) => {

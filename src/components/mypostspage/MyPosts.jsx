@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import IndividualPost from "./IndividualPost.js"
 
-const MyPosts = ({ currentUser, allPosts }) => {
+const MyPosts = ({ currentUser, allPosts, setAllPosts }) => {
 
     useEffect(() => {
         fetchCurrentUserPosts()
@@ -23,7 +23,7 @@ const MyPosts = ({ currentUser, allPosts }) => {
     return (
 
         <div className="myPostsContainer">
-            <IndividualPost myPosts={myPosts} />
+            <IndividualPost myPosts={myPosts} setAllPosts={setAllPosts} />
         </div>
     )
 }

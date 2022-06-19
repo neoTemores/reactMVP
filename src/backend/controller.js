@@ -41,7 +41,6 @@ const getAllUsers = async (_, res) => {
     }
 }
 
-//! figure out cors issues
 const createNewUser = async (req, res) => {
     let firstName = req.body.First_Name
     let lastName = req.body.Last_Name
@@ -76,11 +75,25 @@ const createNewPost = async (req, res) => {
     }
 }
 
+const deletePostById = async (req, res) => {
+    let postId = req.params.id
+    try {
+        let client = await pool.connect();
+        let data = await client.query('DELETE FROM posts WHERE post_id = $1', [postId])
+        res.json(data.rows)
+        client.release()
+
+    } catch (error) {
+        console.error(error);
+        res.send(error)
+    }
+}
 
 module.exports = {
     getAllPosts,
     getPostById,
     getAllUsers,
     createNewUser,
-    createNewPost
+    createNewPost,
+    deletePostById
 }

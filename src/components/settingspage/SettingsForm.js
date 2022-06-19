@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import './ToggleSwitchStyles.css'
 
 const SettingsForm = ({ currentUser }) => {
 
@@ -78,6 +79,19 @@ const SettingsForm = ({ currentUser }) => {
                     value={settingsData.verifyPassword}
                     placeholder="Please reenter password" />
 
+                <div className="container">
+                    {'Dark Theme?'}{" "}
+                    <div className="toggle-switch">
+
+                        <input type="checkbox" className="checkbox"
+                            name={'darkTheme'} id={'darkTheme'} />
+                        <label className="label" htmlFor={'darkTheme'}>
+                            <span className="inner" />
+                            <span className="switch" />
+                        </label>
+
+                    </div>
+                </div>
             </form>
 
         </div>

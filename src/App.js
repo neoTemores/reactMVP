@@ -5,6 +5,7 @@ import Navbar from "./components/Navbar";
 import Modal from "./components/newpostmodal/Modal.jsx"
 import Home from "./components/homepage/Home";
 import MyPosts from "./components/mypostspage/MyPosts";
+import UserPosts from "./components/userpostspage/UserPosts";
 import Settings from './components/settingspage/Settings'
 import About from './components/aboutpage/About'
 
@@ -15,6 +16,7 @@ const App = () => {
   const [showModal, setShowModal] = useState(false)
   const [currentUser, setCurrentUser] = useState(null)
   const [allPosts, setAllPosts] = useState([])
+  const [clickedUserPosts, setClickedUserPosts] = useState(null)
 
   let root = document.getElementById('root')
   let portal = document.getElementById('portal')
@@ -50,8 +52,9 @@ const App = () => {
       <div className="App">
 
         <Routes>
-          <Route exact path='/' element={<Home allPosts={allPosts} />} />
+          <Route exact path='/' element={<Home allPosts={allPosts} setClickedUserPosts={setClickedUserPosts} />} />
           <Route exact path='/myPosts' element={<MyPosts currentUser={currentUser} />} />
+          <Route exact path='/userPosts' element={<UserPosts clickedUserPosts={clickedUserPosts} />} />
           <Route exact path='/settings' element={<Settings />} />
           <Route exact path='/about' element={<About />} />
 

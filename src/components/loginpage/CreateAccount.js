@@ -61,7 +61,9 @@ const CreateAccount = ({ setLoading, setShowLogin }) => {
     }
 
     function createNewUser() {
-        fetch('http://localhost:8000/api/users/create', {
+        setLoading(false)
+
+        fetch('api/users/create', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -70,7 +72,6 @@ const CreateAccount = ({ setLoading, setShowLogin }) => {
         })
             .then(response => response.json())
             .then(() => {
-                setLoading(false)
                 alert('Account successfuly create. Please log in!')
                 return setShowLogin(true)
             })

@@ -87,7 +87,7 @@ body {
   border: 5px solid darkgray;
   font-size: 4rem;
   border-radius: 5px;
-  height: 90vh;
+  height: 95vh;
   overflow: auto;
 }
 
@@ -141,7 +141,7 @@ body {
   z-index: 1;
   width: 350px;
   height: 220px;
-  background: lightgrey;
+  background: gray;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -149,6 +149,16 @@ body {
   position: relative;
   animation: animate 0.3s;
   box-shadow: 10px 10px 10px black;
+}
+
+.textareaNewPost {
+  background-color: whitesmoke;
+}
+
+textarea::placeholder {
+  font-size: 2rem;
+  color: darkolivegreen;
+  font-family: fantasy;
 }
 
 .newPostCloseBtn {
@@ -162,10 +172,12 @@ body {
   border: none;
   outline: none;
   border-radius: 10px;
+  opacity: .5;
 }
 
 .newPostCloseBtn:hover {
   cursor: pointer;
+  opacity: 1;
 }
 
 @keyframes animate {
@@ -219,9 +231,7 @@ ul li:last-child {
   padding-left: 1%;
   margin-bottom: 0;
   color: #333;
-  cursor: default;
-  /* color: rgb(41, 78, 2); */
-  /* opacity: .5; */
+
 }
 
 .post {
@@ -238,6 +248,7 @@ ul li:last-child {
 
 .post:hover {
   font-size: 1.35rem;
+
 }
 
 .indivPostDiv {
@@ -252,6 +263,10 @@ ul li:last-child {
 
 .indivPostDiv:hover {
   cursor: pointer;
+}
+
+.clickedUserPost:hover {
+  cursor: default;
 }
 
 .singlePostDiv {

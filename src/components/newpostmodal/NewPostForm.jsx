@@ -22,12 +22,13 @@ const NewPostForm = () => {
         <div>
             <form onSubmit={handleSubmit}>
                 <textarea
+                    className="textareaNewPost"
                     name="textContent"
                     value={formData.textContent}
                     onChange={handleChange}
                     rows="7"
                     cols="40"
-                    placeholder="Enter post"
+                    placeholder="Whats on your mind?"
                 /> <br />
                 <input type='submit' value='Post' />
 

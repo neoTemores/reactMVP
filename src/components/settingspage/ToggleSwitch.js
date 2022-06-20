@@ -38,7 +38,7 @@ const ToggleSwitch = ({ currentUser, setCurrentUser }) => {
 
     return (
         <div className="toggleContainer">
-            {'Dark Theme?'}{" "}
+            {'Dark Theme:'}{" "}
             <div className="toggle-switch">
 
                 <input type="checkbox" className="checkbox"

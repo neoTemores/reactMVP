@@ -1,7 +1,7 @@
 .toggleContainer {
     text-align: center;
     font-size: 1.5rem;
-
+    padding-top: 5%;
 }
 
 .toggle-switch {
@@ -11,6 +11,8 @@
     text-align: left;
     top: 8px;
     font-size: 1rem;
+    position: relative;
+    top: -1px;
 }
 
 .checkbox {
@@ -23,6 +25,7 @@
     cursor: pointer;
     border: 0 solid #bbb;
     border-radius: 20px;
+
 }
 
 .inner {

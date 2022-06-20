@@ -435,7 +435,7 @@ ul li:last-child {
 .react-confirm-alert-body {
   width: 430px;
   height: 220px;
-  background: gray;
+  background: #888;
   display: grid;
   align-items: center;
   justify-content: center;
@@ -496,7 +496,7 @@ ul li:last-child {
 }
 
 .settingsFormContainer {
-  border: 3px solid #333;
+  border: 3px solid #4445;
   width: 50%;
   padding: 5px;
   margin: 5%;
@@ -505,15 +505,31 @@ ul li:last-child {
   position: relative;
   top: -20px;
   justify-content: center;
-  /* color: black; */
   background: #3335;
   border-radius: 5px;
   box-shadow: 10px 10px 10px black;
+  font-family: fantasy;
 }
 
 .settingsFormContainer form {
   display: grid;
   font-size: 2rem;
+  /* grid-template-columns: 100%; */
+
+}
+
+.settingsFormContainer form label {
+  position: relative;
+  top: 10px;
+}
+
+.settingsData {
+  /* border: none; */
+  border-radius: 9999px;
+  padding: 5px;
+  font-size: .9rem;
+  width: 100%;
+  font-family: 'Poppins', sans-serif;
 }
 
 .updateAccBtn {
@@ -521,25 +537,28 @@ ul li:last-child {
   margin-bottom: 10px;
   margin-top: 10px;
   opacity: .7;
+  transition: opacity .2 ease;
   font-weight: bold;
-  border-radius: 5px;
+  border-radius: 999px;
   border: none;
   box-shadow: 5px 5px 5px black;
-
 }
 
 .updateAccBtn:hover {
   cursor: pointer;
   opacity: 1;
   font-size: 1rem;
+  color: white;
+  font-weight: normal;
 }
 
 .deleteAccBtn {
   margin-bottom: 10px;
   opacity: .7;
+  transition: opacity .2 ease;
   font-weight: bold;
   background-color: darkred;
-  border-radius: 5px;
+  border-radius: 999px;
   border: none;
   box-shadow: 5px 5px 5px black;
 
@@ -549,16 +568,21 @@ ul li:last-child {
   cursor: pointer;
   opacity: 1;
   font-size: 1rem;
+  color: white;
+  font-weight: normal;
 }
 
 .settingsTitle {
   margin-top: 25px;
   margin-bottom: 5px;
-  height: 100px;
+  height: 100%;
+  text-shadow: 0px 0px 10px white;
+  font-style: italic;
 }
 
 .settingsTitleUsername {
   font-family: cursive;
+  font-style: normal;
 }
 
 #editPostTextArea {

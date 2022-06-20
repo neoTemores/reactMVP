@@ -51,7 +51,7 @@ const Login = ({ setLogIn, setCurrentUser, setShowLogin, setLoading }) => {
     return ReactDom.createPortal(
         <div className='modalContainer' >
             <div className='loginContainer'>
-                <form onSubmit={handleSubmit}>
+                <form className="loginForm" onSubmit={handleSubmit}>
                     <input
                         className="loginData"
                         type='text'
@@ -69,8 +69,8 @@ const Login = ({ setLogIn, setCurrentUser, setShowLogin, setLoading }) => {
                         value={loginData.password} /> <br />
 
                     <input className="loginBtn" type='submit' value='Log In' /> <br />
+                    <button type='button' className='createNewActBtn' onClick={() => setShowLogin(false)}>Create New Account</button>
                 </form>
-                <button className='createNewActBtn' onClick={() => setShowLogin(false)}>Create New Account</button>
             </div>
         </div>,
         document.getElementById('portal')

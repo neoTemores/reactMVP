@@ -99,9 +99,9 @@ const CreateAccount = ({ setLoading, setShowLogin }) => {
     return ReactDom.createPortal(
         <div className='modalContainer' >
             <div className='loginContainer'>
-                <form onSubmit={handleSubmit}>
+                <form className='createAccForm' onSubmit={handleSubmit}>
                     <input
-                        className="loginData"
+                        className="loginData newAcc"
                         type='text'
                         placeholder='First Name'
                         name='First_Name'
@@ -109,7 +109,7 @@ const CreateAccount = ({ setLoading, setShowLogin }) => {
                         value={formData.First_Name} /> <br />
 
                     <input
-                        className="loginData"
+                        className="loginData newAcc"
                         type='text'
                         placeholder='Last Name'
                         name='Last_Name'
@@ -117,7 +117,7 @@ const CreateAccount = ({ setLoading, setShowLogin }) => {
                         value={formData.Last_Name} /> <br />
 
                     <input
-                        className="loginData"
+                        className="loginData newAcc"
                         type='text'
                         placeholder='E-Mail'
                         name='email'
@@ -125,7 +125,7 @@ const CreateAccount = ({ setLoading, setShowLogin }) => {
                         value={formData.email} /> <br />
 
                     <input
-                        className="loginData"
+                        className="loginData newAcc"
                         type='text'
                         placeholder='Desired User Name'
                         name='userName'
@@ -133,14 +133,14 @@ const CreateAccount = ({ setLoading, setShowLogin }) => {
                         value={formData.userName} /> <br />
 
                     <input
-                        className="loginData"
+                        className="loginData newAcc"
                         type='text'
                         placeholder='Password'
                         name='password'
                         onChange={handleChange}
                         value={formData.password} /> <br />
                     <input
-                        className="loginData"
+                        className="loginData newAcc"
                         type='text'
                         placeholder='Verify Password'
                         name='verifyPassword'

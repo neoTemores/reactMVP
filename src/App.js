@@ -55,7 +55,7 @@ const App = () => {
           <Route exact path='/' element={<Home allPosts={allPosts} setClickedUserPosts={setClickedUserPosts} currentUser={currentUser} />} />
           <Route exact path='/myPosts' element={<MyPosts currentUser={currentUser} allPosts={allPosts} setAllPosts={setAllPosts} />} />
           <Route exact path='/userPosts' element={<UserPosts clickedUserPosts={clickedUserPosts} />} />
-          <Route exact path='/settings' element={<Settings currentUser={currentUser} setCurrentUser={setCurrentUser} setLogIn={setLogIn} />} />
+          <Route exact path='/settings' element={<Settings currentUser={currentUser} setCurrentUser={setCurrentUser} setLogIn={setLogIn} setAllPosts={setAllPosts} />} />
           <Route exact path='/about' element={<About />} />
 
         </Routes>

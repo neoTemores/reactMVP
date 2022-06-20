@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import ToggleSwitch from './ToggleSwitch'
 import DeleteButton from './DeleteButton'
 
-const SettingsForm = ({ currentUser, setCurrentUser, setLogIn }) => {
+const SettingsForm = ({ currentUser, setCurrentUser, setLogIn, setAllPosts }) => {
 
     const [settingsData, setSettingsData] = useState({
         userId: currentUser.user_id,
@@ -107,7 +107,7 @@ const SettingsForm = ({ currentUser, setCurrentUser, setLogIn }) => {
 
                 <ToggleSwitch currentUser={currentUser} />
                 <input className='updateAccBtn' type='submit' value='Update Settings'></input>
-                <DeleteButton currentUser={currentUser} setLogIn={setLogIn} />
+                <DeleteButton currentUser={currentUser} setLogIn={setLogIn} setAllPosts={setAllPosts} />
             </form>
 
         </div>

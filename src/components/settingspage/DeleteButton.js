@@ -1,16 +1,16 @@
 import React from 'react';
+import { confirmAlert } from 'react-confirm-alert';
 
-const DeleteButton = ({ currentUser, setLogIn }) => {
+const DeleteButton = ({ currentUser, setLogIn, setAllPosts }) => {
 
     const handleDelete = () => {
-        console.log('deleted', currentUser)
         confirmAlert({
-            title: 'Hold on !',
-            message: 'Are you sure you want to DELETE this post?',
+            title: 'Wait! Please don\'t go!',
+            message: 'Are you sure you want to DELETE your account?',
             buttons: [
                 {
                     label: 'Yes',
-                    onClick: () => deletePost(+e.target.id)
+                    onClick: () => deleteAllPostsFromUser()
                 },
                 {
                     label: 'No',
@@ -19,6 +19,27 @@ const DeleteButton = ({ currentUser, setLogIn }) => {
         });
     }
 
+    const deleteAllPostsFromUser = () => {
+        fetch(`api/delete/allPosts/user/${currentUser.user_id}`, {
+            method: 'DELETE',
+            headers: { 'Content-Type': 'application/json' },
+        })
+            .then(() => deleteUser())
+    }
+
+    const deleteUser = () => {
+        fetch(`api/users/delete/${currentUser.user_id}`, {
+            method: 'DELETE',
+            headers: { 'Content-Type': 'application/json' },
+        })
+            .then(() => userDeletedMsg())
+    }
+
+    const userDeletedMsg = () => {
+        setAllPosts([])
+        alert('Sorry to see you go! Your account has been deleted, goodbye.')
+        setLogIn(false)
+    }
     return (
         <button className='deleteAccBtn' type='button' onClick={handleDelete}>DELETE Account</button>
     )

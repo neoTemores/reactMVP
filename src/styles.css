@@ -367,7 +367,7 @@ ul li:last-child {
 }
 
 .react-confirm-alert-body {
-  width: 400px;
+  width: 430px;
   height: 220px;
   background: lightgray;
   display: grid;

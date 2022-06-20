@@ -13,14 +13,18 @@ body {
   margin-top: 1%;
   padding: 0;
   font-family: 'Poppins', sans-serif;
-  /* background-color: floralwhite; */
   background-color: whitesmoke;
   background-image: url('https://images.unsplash.com/photo-1619252584172-a83a949b6efd?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1074&q=80');
+  /* background-attachment: fixed; */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: auto;
 }
 
 .darkTheme {
   background-color: gray;
-  background-image: url('https://images.unsplash.com/photo-1547499417-0b7889e0f147?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1287&q=80');
+  background-image: url('https://getwallpapers.com/wallpaper/full/2/b/a/1416103-black-and-gray-backgrounds-2560x1600-for-samsung.jpg');
+  color: floralwhite
 }
 
 #root {
@@ -258,8 +262,7 @@ ul li:last-child {
   font-family: fantasy;
   padding-left: 1%;
   margin-bottom: 0;
-  color: #333;
-
+  /* color: #333; */
 }
 
 .post {
@@ -436,8 +439,7 @@ ul li:last-child {
   margin-top: 0;
   display: flex;
   justify-content: center;
-
-
+  color: black;
   background: lightgray;
   border-radius: 5px;
   box-shadow: 10px 10px 10px black;

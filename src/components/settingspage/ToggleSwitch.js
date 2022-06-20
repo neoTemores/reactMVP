@@ -14,7 +14,6 @@ const ToggleSwitch = ({ currentUser, setCurrentUser }) => {
                 darktheme: e.target.checked
             }
         })
-        // updateThemeSetting()
     }
 
     useEffect(() => {
@@ -25,7 +24,6 @@ const ToggleSwitch = ({ currentUser, setCurrentUser }) => {
     darkTheme ? body.classList.add('darkTheme') : body.classList.remove('darkTheme')
 
     const updateThemeSetting = () => {
-        console.log(darkTheme)
         const darkThemeSetting = {
             "darktheme": darkTheme,
             "userId": currentUser.user_id

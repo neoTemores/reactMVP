@@ -15,7 +15,7 @@ const Navbar = ({ openModal, setLogIn, setCurrentUser, currentUser }) => {
     return (
         <div className='navbar'>
 
-            <Link to='/' className='nav-site-name'><img src='imgs/mountain-clipart-3.png' alt='logoSmall' id='logoSmall' /></Link> <br />
+            <Link to='/' className='nav-site-logo'><img src='imgs/mountain-clipart-3.png' alt='logoSmall' id='logoSmall' /></Link> <br />
             <Link to='/' className='nav-site-name'>Ritter</Link> <br />
 
             <button className='newPostBtn' onClick={openModal}>POST</button>

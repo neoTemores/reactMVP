@@ -172,7 +172,6 @@ body {
 .textareaNewPost {
   background-color: whitesmoke;
   font-family: inherit;
-  font-size: 1.3rem;
   text-align: center;
   font-weight: bold;
   height: 150px;
@@ -183,6 +182,9 @@ body {
   border: none;
   border: 3px solid darkgray;
   border-radius: 5px;
+  font-size: 2rem;
+  color: darkolivegreen;
+  font-family: fantasy;
 }
 
 textarea::placeholder {

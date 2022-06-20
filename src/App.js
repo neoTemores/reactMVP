@@ -18,12 +18,9 @@ const App = () => {
   const [allPosts, setAllPosts] = useState([])
   const [clickedUserPosts, setClickedUserPosts] = useState(null)
 
-  let root = document.getElementById('root')
-  let portal = document.getElementById('portal')
+  let body = document.getElementById('body');
 
-  loading ? root.classList.add('loading') : root.classList.remove('loading')
-  loading ? portal.classList.add('loading') : portal.classList.remove('loading')
-
+  loading ? body.classList.add('loading') : body.classList.remove('loading')
 
   useEffect(() => {
     fetchAllPosts()
@@ -38,6 +35,9 @@ const App = () => {
 
   if (!loggedIn) {
     return <LoginPage setLogIn={setLogIn} setCurrentUser={setCurrentUser} setLoading={setLoading} />
+  }
+  if (loggedIn) {
+    currentUser.darktheme ? body.classList.add('darkTheme') : body.classList.remove('darkTheme')
   }
 
   const openModal = () => {

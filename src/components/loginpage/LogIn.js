@@ -62,7 +62,7 @@ const Login = ({ setLogIn, setCurrentUser, setShowLogin, setLoading }) => {
 
                     <input
                         className="loginData"
-                        type='text'
+                        type='password'
                         placeholder='Password'
                         name='password'
                         onChange={handleChange}

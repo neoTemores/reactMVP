@@ -134,14 +134,14 @@ const CreateAccount = ({ setLoading, setShowLogin }) => {
 
                     <input
                         className="loginData newAcc"
-                        type='text'
+                        type='password'
                         placeholder='Password'
                         name='password'
                         onChange={handleChange}
                         value={formData.password} /> <br />
                     <input
                         className="loginData newAcc"
-                        type='text'
+                        type='password'
                         placeholder='Verify Password'
                         name='verifyPassword'
                         onChange={handleChange}

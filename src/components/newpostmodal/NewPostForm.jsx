@@ -38,6 +38,7 @@ const NewPostForm = ({ setAllPosts, currentUser, setShowModal }) => {
     return (
         <div className="newPostDiv">
             <form onSubmit={handleSubmit} className='newPostForm'>
+                <input className='newPostSubBtn' type='submit' value='Post' />
                 <textarea
                     className="textareaNewPost"
                     name="textContent"
@@ -47,7 +48,6 @@ const NewPostForm = ({ setAllPosts, currentUser, setShowModal }) => {
                     cols="40"
                     placeholder="What's on your mind?"
                 /> <br />
-                <input type='submit' value='Post' />
 
             </form>
         </div>

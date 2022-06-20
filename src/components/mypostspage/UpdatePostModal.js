@@ -14,8 +14,6 @@ const UpdatePostModal = ({ postToUpdate, setAllPosts, setShowUpdatePostModal }) 
     return ReactDom.createPortal(
         <div className='modalContainer' ref={modalRef} onClick={closeModal}>
             <div className='newPostContainer'>
-                {/* <p>{postToUpdate[0].post_content}</p> */}
-                {console.log(postToUpdate)}
                 <UpdatePostForm postToUpdate={postToUpdate[0]} setAllPosts={setAllPosts} setShowUpdatePostModal={setShowUpdatePostModal} />
                 <button className='newPostCloseBtn' onClick={() => setShowUpdatePostModal(false)}> X </button>
             </div>

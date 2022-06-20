@@ -34,8 +34,11 @@ const UpdatePostForm = ({ postToUpdate, setAllPosts, setShowUpdatePostModal }) =
 
     return (
         <div className="newPostDiv">
-            <form onSubmit={handleSubmit} className='newPostForm'>
+            <form onSubmit={handleSubmit} className='newPostForm' id='editPostForm'>
+                <input type='submit' value='Update Post'
+                    id='editPostSubmitBtn' />
                 <textarea
+                    id='editPostTextArea'
                     className="textareaNewPost"
                     name="textContent"
                     value={formData.textContent}
@@ -43,7 +46,7 @@ const UpdatePostForm = ({ postToUpdate, setAllPosts, setShowUpdatePostModal }) =
                     rows="7"
                     cols="40"
                 /> <br />
-                <input type='submit' value='Update Post' />
+
 
             </form>
         </div>

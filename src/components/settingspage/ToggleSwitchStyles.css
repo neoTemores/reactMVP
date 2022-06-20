@@ -80,12 +80,3 @@
 .checkbox:checked+.label .switch {
     right: 0px;
 }
-
-
-.updateAccBtn:hover {
-    cursor: pointer;
-}
-
-.deleteAccBtn:hover {
-    cursor: pointer;
-}

@@ -105,7 +105,7 @@ const SettingsForm = ({ currentUser, setCurrentUser, setLogIn, setAllPosts }) =>
                     value={settingsData.verifyPassword}
                     placeholder="Please reenter password" />
 
-                <ToggleSwitch currentUser={currentUser} />
+                <ToggleSwitch currentUser={currentUser} setCurrentUser={setCurrentUser} />
                 <input className='updateAccBtn' type='submit' value='Update Settings'></input>
                 <DeleteButton currentUser={currentUser} setLogIn={setLogIn} setAllPosts={setAllPosts} />
             </form>

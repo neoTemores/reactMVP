@@ -1,5 +1,7 @@
-.container {
-    text-align: left;
+.toggleContainer {
+    text-align: center;
+    font-size: 1.5rem;
+
 }
 
 .toggle-switch {
@@ -43,14 +45,14 @@
 }
 
 .inner:before {
-    content: "YES";
+    content: "ON";
     padding-left: 10px;
     background-color: darkolivegreen;
     color: #fff;
 }
 
 .inner:after {
-    content: "NO";
+    content: "OFF";
     padding-right: 10px;
     background-color: #bbb;
     color: #fff;

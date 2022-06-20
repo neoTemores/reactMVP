@@ -158,9 +158,21 @@ const deleteAllUserPosts = async (req, res) => {
         console.error(error)
         res.send(error)
     }
-
 }
 
+const updateThemeSetting = async (req, res) => {
+    let darkTheme = req.body.darktheme
+    let userId = req.body.userId
+
+    try {
+        let client = await pool.connect();
+        let data = await client.query('UPDATE users SET darktheme = $1 WHERE user_id = $2', [darkTheme, userId])
+        res.json(data.rows)
+        client.release()
+    } catch (error) {
+        console.log(error)
+    }
+}
 module.exports = {
     getAllPosts,
     getPostsById,
@@ -172,5 +184,6 @@ module.exports = {
     updatePostById,
     updateUserData,
     deleteUserById,
-    deleteAllUserPosts
+    deleteAllUserPosts,
+    updateThemeSetting
 }

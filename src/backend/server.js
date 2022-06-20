@@ -44,6 +44,8 @@ app.delete('/api/users/delete/:id', controller.deleteUserById)
 
 app.delete('/api/delete/allPosts/user/:id', controller.deleteAllUserPosts)
 
+app.patch('/api/user/themesetting', controller.updateThemeSetting)
+
 
 app.use((_, res) => {
     res.status(404)

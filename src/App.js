@@ -29,6 +29,7 @@ const App = () => {
     fetchAllPosts()
   }, [allPosts.length])
 
+
   const fetchAllPosts = async () => {
     const res = await fetch('http://localhost:8000/api/posts')
     const data = await res.json()

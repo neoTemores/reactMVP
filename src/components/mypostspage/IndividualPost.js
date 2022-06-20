@@ -47,7 +47,9 @@ const IndividualPost = ({ myPosts, setAllPosts, setShowUpdatePostModal, setPostT
             .catch(error => console.error(error))
     }
 
+    if (myPosts.length === 0) { return <div className='noPostsMsg'><h4 >You don't have any posts!</h4></div> }
     return (
+
         myPosts.map(post =>
             <div className='singlePostDiv' key={post.post_id} >
                 <div className='postControlsDiv'>

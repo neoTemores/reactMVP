@@ -10,10 +10,10 @@ function LoginPage({ setLogIn, setCurrentUser, setLoading }) {
     return (
         <>
             <div className='loginLogo'>
-                <h1>Logo</h1>
+                <img src='imgs/mountain-clipart-3.png' alt='logo' />
             </div>
-            <div className='loginSiteName'>
-                <h1>Site Name</h1>
+            <div className='loginPageSiteName'>
+                <h1>Project Ritter</h1>
             </div>
 
             <div className='loginPage'>

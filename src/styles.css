@@ -585,6 +585,25 @@ ul li:last-child {
   font-style: normal;
 }
 
+.aboutPgTitle {
+  font-size: 3rem;
+  margin-top: 11%;
+  text-shadow: 0px 0px 5px white;
+  font-style: italic;
+}
+
+.aboutPgContainer {
+  font-family: fantasy;
+  font-size: 1.5rem;
+  font-weight: bold;
+  width: 90%;
+}
+
+.indent {
+  text-indent: 50px;
+}
+
+
 #editPostTextArea {
   position: relative;
   left: 27px;

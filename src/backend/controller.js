@@ -116,6 +116,25 @@ const updatePostById = async (req, res) => {
     }
 }
 
+const updateUserData = async (req, res) => {
+    let userId = req.body.userId
+    let firstName = req.body.First_Name
+    let lastName = req.body.Last_Name
+    let email = req.body.email
+    let password = req.body.password
+
+    try {
+        let client = await pool.connect();
+        let data = await client.query('UPDATE users SET first_name = $1, last_name = $2, email = $3, password = $4 WHERE user_id = $5', [firstName, lastName, email, password, userId])
+        res.json(data.rows)
+        client.release()
+
+    } catch (error) {
+        console.error(error)
+        res.send(error)
+    }
+}
+
 module.exports = {
     getAllPosts,
     getPostsById,
@@ -124,5 +143,6 @@ module.exports = {
     createNewPost,
     deletePostById,
     getSinglePostById,
-    updatePostById
+    updatePostById,
+    updateUserData
 }

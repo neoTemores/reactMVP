@@ -1,20 +1,42 @@
 import React, { useState } from 'react';
-import './ToggleSwitchStyles.css'
+import ToggleSwitch from './ToggleSwitch'
 
 const SettingsForm = ({ currentUser }) => {
 
     const [settingsData, setSettingsData] = useState({
-        firstName: currentUser.first_name,
-        lastName: currentUser.last_name,
+        userId: currentUser.user_id,
+        First_Name: currentUser.first_name,
+        Last_Name: currentUser.last_name,
         email: currentUser.email,
         userName: currentUser.user_name,
         password: currentUser.password,
-        verifyPassword: '',
-        darkTheme: currentUser.darktheme
+        verifyPassword: currentUser.password,
     })
 
     const handleSubmit = (e) => {
         e.preventDefault()
+        settingsData.password === settingsData.verifyPassword ? checkForBlankField() : passwordsDoNotMatch()
+    }
+
+    const passwordsDoNotMatch = () => { return alert('Error: Passwords need to match!') }
+
+    const checkForBlankField = () => {
+        for (const key in settingsData) {
+            if (settingsData[key].length === 0) {
+                return alert(`All fields are required, missing ${key}`)
+            }
+        }
+        return updateUserSettings()
+    }
+
+    const updateUserSettings = () => {
+        fetch('api/users/update', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json', },
+            body: JSON.stringify(settingsData)
+        })
+            .then(() => alert('Account successfully updated. Please log back in.'))
+            .then(() => console.log('logged out'))
     }
 
     const handleChange = (e) => {
@@ -33,18 +55,18 @@ const SettingsForm = ({ currentUser }) => {
                 <input
                     className='settingsData'
                     type='text'
-                    name="firstName"
+                    name="First_Name"
                     onChange={handleChange}
-                    value={settingsData.firstName} />
+                    value={settingsData.First_Name} />
 
                 <label>Last name:</label>
 
                 <input
                     className='settingsData'
                     type='text'
-                    name="lastName"
+                    name="Last_Name"
                     onChange={handleChange}
-                    value={settingsData.lastName} />
+                    value={settingsData.Last_Name} />
                 <label>E-Mail:</label>
 
                 <input
@@ -53,14 +75,6 @@ const SettingsForm = ({ currentUser }) => {
                     name="email"
                     onChange={handleChange}
                     value={settingsData.email} />
-
-                <label>User Name:</label>
-                <input
-                    className='settingsData'
-                    type='text'
-                    name="userName"
-                    onChange={handleChange}
-                    value={settingsData.userName} />
 
                 <label>Password:</label>
                 <input
@@ -79,19 +93,9 @@ const SettingsForm = ({ currentUser }) => {
                     value={settingsData.verifyPassword}
                     placeholder="Please reenter password" />
 
-                <div className="container">
-                    {'Dark Theme?'}{" "}
-                    <div className="toggle-switch">
-
-                        <input type="checkbox" className="checkbox"
-                            name={'darkTheme'} id={'darkTheme'} />
-                        <label className="label" htmlFor={'darkTheme'}>
-                            <span className="inner" />
-                            <span className="switch" />
-                        </label>
-
-                    </div>
-                </div>
+                <ToggleSwitch currentUser={currentUser} />
+                <input className='updateBtn' type='submit' value='Update Settings'></input>
+                <button type='button'>DELETE Account</button>
             </form>
 
         </div>

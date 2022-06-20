@@ -1,5 +1,5 @@
 .container {
-    text-align: center;
+    text-align: left;
 }
 
 .toggle-switch {
@@ -45,7 +45,7 @@
 .inner:before {
     content: "YES";
     padding-left: 10px;
-    background-color: #060;
+    background-color: darkolivegreen;
     color: #fff;
 }
 
@@ -77,4 +77,9 @@
 
 .checkbox:checked+.label .switch {
     right: 0px;
+}
+
+
+.updateBtn:hover {
+    cursor: pointer;
 }

@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import ToggleSwitch from './ToggleSwitch'
+import DeleteButton from './DeleteButton'
 
-const SettingsForm = ({ currentUser }) => {
+const SettingsForm = ({ currentUser, setCurrentUser, setLogIn }) => {
 
     const [settingsData, setSettingsData] = useState({
         userId: currentUser.user_id,
@@ -30,13 +31,24 @@ const SettingsForm = ({ currentUser }) => {
     }
 
     const updateUserSettings = () => {
+
         fetch('api/users/update', {
-            method: 'POST',
+            method: 'PATCH',
             headers: { 'Content-Type': 'application/json', },
-            body: JSON.stringify(settingsData)
+            body: JSON.stringify((settingsData))
         })
-            .then(() => alert('Account successfully updated. Please log back in.'))
-            .then(() => console.log('logged out'))
+            .then(() => alert('Account successfully updated!'))
+            .then(() => setCurrentUser(prevUserData => {
+                return {
+                    ...prevUserData,
+                    first_name: settingsData.First_Name,
+                    last_name: settingsData.Last_Name,
+                    email: settingsData.email,
+                    password: settingsData.password
+                }
+            }
+
+            ))
     }
 
     const handleChange = (e) => {
@@ -94,8 +106,8 @@ const SettingsForm = ({ currentUser }) => {
                     placeholder="Please reenter password" />
 
                 <ToggleSwitch currentUser={currentUser} />
-                <input className='updateBtn' type='submit' value='Update Settings'></input>
-                <button type='button'>DELETE Account</button>
+                <input className='updateAccBtn' type='submit' value='Update Settings'></input>
+                <DeleteButton currentUser={currentUser} setLogIn={setLogIn} />
             </form>
 
         </div>

@@ -40,6 +40,10 @@ app.patch('/api/posts/:id', controller.updatePostById);
 
 app.patch('/api/users/update', controller.updateUserData);
 
+app.delete('/api/users/delete/:id', controller.deleteUserById)
+
+app.delete('/api/delete/allPosts/user/:id', controller.deleteAllUserPosts)
+
 
 app.use((_, res) => {
     res.status(404)

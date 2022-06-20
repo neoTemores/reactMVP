@@ -80,6 +80,10 @@
 }
 
 
-.updateBtn:hover {
+.updateAccBtn:hover {
+    cursor: pointer;
+}
+
+.deleteAccBtn:hover {
     cursor: pointer;
 }

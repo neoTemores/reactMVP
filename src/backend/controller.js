@@ -135,6 +135,32 @@ const updateUserData = async (req, res) => {
     }
 }
 
+const deleteUserById = async (req, res) => {
+
+    try {
+        let client = await pool.connect();
+        let data = await client.query('DELETE FROM users WHERE user_id = $1', [req.params.id])
+        res.json(data.rows)
+        client.release()
+    } catch (error) {
+        console.error(error)
+        res.send(error)
+    }
+}
+
+const deleteAllUserPosts = async (req, res) => {
+    try {
+        let client = await pool.connect();
+        let data = await client.query('DELETE FROM posts WHERE user_id = $1', [req.params.id])
+        res.json(data.rows)
+        client.release()
+    } catch (error) {
+        console.error(error)
+        res.send(error)
+    }
+
+}
+
 module.exports = {
     getAllPosts,
     getPostsById,
@@ -144,5 +170,7 @@ module.exports = {
     deletePostById,
     getSinglePostById,
     updatePostById,
-    updateUserData
+    updateUserData,
+    deleteUserById,
+    deleteAllUserPosts
 }

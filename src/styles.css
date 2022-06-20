@@ -8,6 +8,15 @@
   cursor: wait !important
 }
 
+#logoSmall {
+  width: 150px;
+}
+
+/* for home page... */
+/* #logoLarge{
+
+} */
+
 body {
   margin: 0;
   margin-top: 1%;

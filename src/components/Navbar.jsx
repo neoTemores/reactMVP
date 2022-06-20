@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from "react-router-dom"
+// import logo from ''
 
 const Navbar = ({ openModal, setLogIn, setCurrentUser, currentUser }) => {
     const handleLogOut = () => {
@@ -11,11 +12,10 @@ const Navbar = ({ openModal, setLogIn, setCurrentUser, currentUser }) => {
         })
     }
 
-
     return (
         <div className='navbar'>
 
-            <Link to='/' className='nav-site-name'>LOGO</Link> <br />
+            <Link to='/' className='nav-site-name'><img src='imgs/mountain-clipart-3.png' alt='logoSmall' id='logoSmall' /></Link> <br />
             <Link to='/' className='nav-site-name'>Ritter</Link> <br />
 
             <button className='newPostBtn' onClick={openModal}>POST</button>
@@ -42,7 +42,7 @@ const Navbar = ({ openModal, setLogIn, setCurrentUser, currentUser }) => {
                     </li>
                 </ul>
             </div>
-        </div>
+        </div >
     )
 }
 

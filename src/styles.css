@@ -603,6 +603,23 @@ ul li:last-child {
   text-indent: 50px;
 }
 
+.sssLinkDiv {
+  margin-top: 100px;
+  opacity: .3;
+  transition: opacity .2s ease-in-out;
+  width: fit-content;
+}
+
+.sssLinkDiv:hover {
+  cursor: pointer;
+  opacity: .6;
+}
+
+.sssLink {
+  all: unset
+    /* no underline */
+
+}
 
 #editPostTextArea {
   position: relative;

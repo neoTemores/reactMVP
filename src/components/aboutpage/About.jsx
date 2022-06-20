@@ -12,6 +12,10 @@ const About = () => {
                     One day, when we meet again, I hope that you accept my apology. Until then brother, I hope you know that I will continue to share my screen with you.</p>
 
                 <p>Your memory will live on, may you rest in peace.</p>
+
+                <div className="sssLinkDiv">
+                    <a className="sssLink" href="https://stopsoldiersuicide.org/" target="_blank">Stop Soldier suicide</a>
+                </div>
             </div>
         </>
     )

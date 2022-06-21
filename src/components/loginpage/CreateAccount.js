@@ -78,9 +78,6 @@ const CreateAccount = ({ setLoading, setShowLogin }) => {
             });
     }
 
-
-
-
     const handleReset = () => {
         setFormData(() => {
             return {

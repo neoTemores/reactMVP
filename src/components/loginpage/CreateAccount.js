@@ -21,10 +21,13 @@ const CreateAccount = ({ setLoading, setShowLogin }) => {
         })
     }
 
+    //! 21JUne 10:38 added setLoading()
     const handleSubmit = (e) => {
         e.preventDefault()
+        setLoading(true)
         for (const key in formData) {
             if (formData[key].length === 0) {
+                setLoading(false)
                 return alert(`All fields are required, missing ${key}`)
             }
         }
@@ -37,21 +40,32 @@ const CreateAccount = ({ setLoading, setShowLogin }) => {
         }
 
         else {
+            setLoading(false)
             return alert('Passwords do not match')
         }
     }
 
-    const fetchAllUsers = async () => {
-        const res = await fetch('/api/users')
-        const data = await res.json()
-        return checkForTakenUserName(data)
+    //! 21June 10:30 refactored to .then syntax
+    // const fetchAllUsers = async () => {
+    //     const res = await fetch('/api/users')
+    //     const data = await res.json()
+    //     return checkForTakenUserName(data)
+    // }
+
+    const fetchAllUsers = () => {
+        fetch('/api/users')
+            .then((res) => res.json())
+            .then((data) => checkForTakenUserName(data))
+            .catch((err) => console.log(err))
     }
 
+    //!added setLoading
     const checkForTakenUserName = (data) => {
 
         for (let i = 0; i < data.length; i++) {
             const current = data[i];
             if (formData.userName === current.user_name) {
+                setLoading(false)
                 return alert('Sorry, that User Name is already taken!')
             }
         }
@@ -59,6 +73,7 @@ const CreateAccount = ({ setLoading, setShowLogin }) => {
         return createNewUser()
     }
 
+    //!setLoading
     function createNewUser() {
 
         fetch('/api/users/create', {
@@ -70,6 +85,7 @@ const CreateAccount = ({ setLoading, setShowLogin }) => {
         })
             .then(response => response.json())
             .then(() => {
+                setLoading(false)
                 alert('Account successfuly create. Please log in!')
                 return setShowLogin(true)
             })

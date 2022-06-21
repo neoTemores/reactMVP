@@ -16,11 +16,18 @@ const Login = ({ setLogIn, setCurrentUser, setShowLogin, setLoading }) => {
         setLoading(true)
         fetchAllUsers()
     }
+    //! 06/21 10:34 refactored to .then syntax
+    // const fetchAllUsers = async () => {
+    //     const res = await fetch('/api/users')
+    //     const data = await res.json()
+    //     return authenticateInput(data)
+    // }
 
-    const fetchAllUsers = async () => {
-        const res = await fetch('/api/users')
-        const data = await res.json()
-        return authenticateInput(data)
+    const fetchAllUsers = () => {
+        fetch('/api/users')
+            .then((res) => res.json())
+            .then((data) => authenticateInput(data))
+            .catch((err) => console.log(err))
     }
 
     const authenticateInput = (data) => {

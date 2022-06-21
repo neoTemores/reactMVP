@@ -23,7 +23,6 @@ const CreateAccount = ({ setLoading, setShowLogin }) => {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        setLoading(true)
         for (const key in formData) {
             if (formData[key].length === 0) {
                 return alert(`All fields are required, missing ${key}`)
@@ -61,7 +60,6 @@ const CreateAccount = ({ setLoading, setShowLogin }) => {
     }
 
     function createNewUser() {
-        setLoading(false)
 
         fetch('/api/users/create', {
             method: 'POST',

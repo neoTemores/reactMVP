@@ -6,7 +6,7 @@ const MyPosts = ({ currentUser, allPosts, setAllPosts }) => {
 
     useEffect(() => {
         fetchCurrentUserPosts()
-    }, [allPosts.length])
+    }, [allPosts, allPosts.length])
 
     const [myPosts, setMyPosts] = useState([])
     const [postToUpdate, setPostToUpdate] = useState(null)
@@ -20,17 +20,25 @@ const MyPosts = ({ currentUser, allPosts, setAllPosts }) => {
         if (postToUpdate) { return setShowUpdatePostModal(true) }
     }
 
-    const fetchCurrentUserPosts = async () => {
-        try {
-            let res = await fetch(`/api/posts/${currentUser.user_id}`)
-            let data = await res.json()
-            return setMyPosts(() => {
-                return data
-            })
-        } catch (error) {
+    // const fetchCurrentUserPosts = async () => {
+    //     try {
+    //         let res = await fetch(`/api/posts/${currentUser.user_id}`)
+    //         let data = await res.json()
+    //         return setMyPosts(() => {
+    //             return data
+    //         })
+    //     } catch (error) {
 
-        }
+    //     }
+    // }
+
+    const fetchCurrentUserPosts = () => {
+      fetch(`/api/posts/${currentUser.user_id}`)
+      .then((res) => res.json())
+      .then((data) => setMyPosts(() => {return data}))
+      .catch((err)=> console.log(err))
     }
+
     return (
 
         <div className="myPostsContainer">

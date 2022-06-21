@@ -6,8 +6,8 @@ const controller = require('./src/backend/controller')
 
 const PORT = process.env.PORT;
 
-app.use(express.static('build'));
 app.use(express.json());
+app.use(express.static('build'));
 
 app.get('*', (req, res) => {
     req.sendFile(path.resolve(__dirname, 'build', 'index.html'))

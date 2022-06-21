@@ -27,11 +27,17 @@ const App = () => {
   }, [allPosts.length])
 
 
-  const fetchAllPosts = async () => {
-    const res = await fetch('/api/posts')
-    const data = await res.json()
-    return setAllPosts(data)
+  const fetchAllPosts = () => {
+    fetch('/api/posts')
+      .then((res) => res.json())
+      .then((data) => setAllPosts(data))
   }
+
+  // const fetchAllPosts = async () => {
+  //   const res = await fetch('/api/posts')
+  //   const data = await res.json()
+  //   return setAllPosts(data)
+  // }
 
   if (!loggedIn) {
     return <LoginPage setLogIn={setLogIn} setCurrentUser={setCurrentUser} setLoading={setLoading} />

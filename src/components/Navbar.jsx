@@ -10,6 +10,7 @@ const Navbar = ({ openModal, setLogIn, setCurrentUser, currentUser }) => {
         setCurrentUser(() => {
             return null
         })
+         return window.location.reload()
     }
 
     return (

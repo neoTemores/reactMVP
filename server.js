@@ -10,12 +10,8 @@ app.use(express.json());
 
 if (process.env.NODE_ENV === "production") {
 
-    // app.use(express.static('build'));
     app.use(express.static('build'));
 
-    // app.get('*', (req, res) => {
-    //     req.sendFile(path.resolve(__dirname, 'build', 'index.html'))
-    // })
 }
 
 app.listen(PORT, (err) => {
@@ -29,13 +25,13 @@ app.get('/api/posts/:id', controller.getPostsById);
 
 app.get('/api/users', controller.getAllUsers);
 
+app.get('/api/singlepost/:id', controller.getSinglePostById);
+
 app.post('/api/users/create', controller.createNewUser);
 
 app.post('/api/posts/create', controller.createNewPost);
 
-app.delete('/api/posts/:id', controller.deletePostById);
-
-app.get('/api/singlepost/:id', controller.getSinglePostById)
+app.patch('/api/user/themesetting', controller.updateThemeSetting)
 
 app.patch('/api/posts/:id', controller.updatePostById);
 
@@ -45,7 +41,7 @@ app.delete('/api/users/delete/:id', controller.deleteUserById)
 
 app.delete('/api/delete/allPosts/user/:id', controller.deleteAllUserPosts)
 
-app.patch('/api/user/themesetting', controller.updateThemeSetting)
+app.delete('/api/posts/:id', controller.deletePostById);
 
 app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, '/build/index.html'));

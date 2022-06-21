@@ -24,7 +24,7 @@ const App = () => {
 
   useEffect(() => {
     fetchAllPosts()
-  }, [allPosts.length])
+  }, [allPosts])
 
 
   const fetchAllPosts = () => {
@@ -34,11 +34,6 @@ const App = () => {
       .catch((error) => console.log(error))
   }
 
-  // const fetchAllPosts = async () => {
-  //   const res = await fetch('/api/posts')
-  //   const data = await res.json()
-  //   return setAllPosts(data)
-  // }
 
   if (!loggedIn) {
     return <LoginPage setLogIn={setLogIn} setCurrentUser={setCurrentUser} setLoading={setLoading} />

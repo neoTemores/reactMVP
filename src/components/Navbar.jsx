@@ -36,7 +36,7 @@ const Navbar = ({ openModal, setLogIn, setCurrentUser, currentUser }) => {
                         <Link to='/about' className='nav-link'>About</Link>
                     </li>
                     <li>
-                        <button className='nav-link' onClick={handleLogOut}>Log Out</button>
+                        <button className='nav-link logoutBtn' onClick={handleLogOut}>Log Out</button>
                         {/* <Link to="/" className='nav-link' onClick={handleLogOut}>Log Out</Link> */}
                     </li>
                     <li>

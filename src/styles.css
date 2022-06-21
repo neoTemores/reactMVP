@@ -369,6 +369,19 @@ ul li:last-child {
   text-shadow: 0 0 5px white;
 }
 
+.logoutBtn {
+  border: none;
+  background-color: transparent;
+  color: inherit;
+  font-size: inherit;
+  font-family: inherit;
+  opacity: .5;
+}
+
+.logoutBtn:hover {
+  cursor: pointer;
+}
+
 .siteLinks {
   height: fit-content;
   margin-top: 40%;

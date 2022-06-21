@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import ReactDom from "react-dom";
-
+import { useNavigate } from 'react-router-dom';
 
 const Login = ({ setLogIn, setCurrentUser, setShowLogin, setLoading }) => {
+    let navigate = useNavigate();
 
     const [loginData, setLoginData] = useState({
         userName: '',
@@ -27,6 +28,7 @@ const Login = ({ setLogIn, setCurrentUser, setShowLogin, setLoading }) => {
             if (current.user_name === loginData.userName && current.password === loginData.password) {
 
                 setLogIn(true)
+                navigate('/')
                 return setCurrentUser(() => {
                     return current
                 })

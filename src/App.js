@@ -24,7 +24,7 @@ const App = () => {
 
   useEffect(() => {
     fetchAllPosts()
-  }, [allPosts])
+  }, [allPosts, allPosts.length])
 
 
   const fetchAllPosts = () => {

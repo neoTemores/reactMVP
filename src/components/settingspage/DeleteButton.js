@@ -20,7 +20,7 @@ const DeleteButton = ({ currentUser, setLogIn, setAllPosts }) => {
     }
 
     const deleteAllPostsFromUser = () => {
-        fetch(`https://project-ritter.herokuapp.com/api/delete/allPosts/user/${currentUser.user_id}`, {
+        fetch(`/api/delete/allPosts/user/${currentUser.user_id}`, {
             method: 'DELETE',
             headers: { 'Content-Type': 'application/json' },
         })
@@ -28,7 +28,7 @@ const DeleteButton = ({ currentUser, setLogIn, setAllPosts }) => {
     }
 
     const deleteUser = () => {
-        fetch(`https://project-ritter.herokuapp.com/api/users/delete/${currentUser.user_id}`, {
+        fetch(`/api/users/delete/${currentUser.user_id}`, {
             method: 'DELETE',
             headers: { 'Content-Type': 'application/json' },
         })

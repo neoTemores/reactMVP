@@ -28,7 +28,7 @@ const App = () => {
 
 
   const fetchAllPosts = async () => {
-    const res = await fetch('https://project-ritter.herokuapp.com/api/posts')
+    const res = await fetch('/api/posts')
     const data = await res.json()
     return setAllPosts(data)
   }

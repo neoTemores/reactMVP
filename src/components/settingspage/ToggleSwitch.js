@@ -29,7 +29,7 @@ const ToggleSwitch = ({ currentUser, setCurrentUser }) => {
             "userId": currentUser.user_id
         }
 
-        fetch('https://project-ritter.herokuapp.com/api/user/themesetting', {
+        fetch('/api/user/themesetting', {
             method: 'PATCH',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(darkThemeSetting)

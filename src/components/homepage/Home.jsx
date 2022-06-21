@@ -18,7 +18,7 @@ const Home = ({ allPosts, setClickedUserPosts, currentUser }) => {
 
     const fetchClickedUserPosts = async (id) => {
         try {
-            let res = await fetch(`https://project-ritter.herokuapp.com/api/posts/${id}`)
+            let res = await fetch(`/api/posts/${id}`)
             let data = await res.json()
             navigate(path)
             return setClickedUserPosts(() => {

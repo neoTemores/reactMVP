@@ -31,6 +31,7 @@ const App = () => {
     fetch('/api/posts')
       .then((res) => res.json())
       .then((data) => setAllPosts(data))
+      .catch((error) => console.log(error))
   }
 
   // const fetchAllPosts = async () => {

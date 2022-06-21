@@ -4,17 +4,21 @@ const express = require('express')
 const app = express();
 const controller = require('./src/backend/controller')
 const path = require('path')
-const PORT = process.env.PORT;
+const PORT = process.env.PORT || 8000;
 
 app.use(express.json());
-app.use(express.static('build'));
 
-app.get('*', (req, res) => {
-    req.sendFile(path.resolve(__dirname, 'build', 'index.html'))
-})
+if (process.env.NODE_ENV === "production") {
 
+    app.use(express.static('build'));
 
-app.listen(PORT, () => {
+    app.get('*', (req, res) => {
+        req.sendFile(path.resolve(__dirname, 'build', 'index.html'))
+    })
+}
+
+app.listen(PORT, (err) => {
+    if (err) return console.log(err);
     console.log(`Listening on port: ${PORT}`)
 })
 

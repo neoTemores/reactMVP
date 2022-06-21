@@ -22,7 +22,7 @@ const MyPosts = ({ currentUser, allPosts, setAllPosts }) => {
 
     const fetchCurrentUserPosts = async () => {
         try {
-            let res = await fetch(`http://localhost:8000/api/posts/${currentUser.user_id}`)
+            let res = await fetch(`https://project-ritter.herokuapp.com/api/posts/${currentUser.user_id}`)
             let data = await res.json()
             return setMyPosts(() => {
                 return data

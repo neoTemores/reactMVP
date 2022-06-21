@@ -12,7 +12,7 @@ const UpdatePostForm = ({ postToUpdate, setAllPosts, setShowUpdatePostModal }) =
 
     const updatePost = () => {
 
-        fetch(`api/posts/${postToUpdate.post_id}`, {
+        fetch(`https://project-ritter.herokuapp.com/api/posts/${postToUpdate.post_id}`, {
             method: 'PATCH',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(formData)

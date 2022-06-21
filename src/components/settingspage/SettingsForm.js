@@ -32,7 +32,7 @@ const SettingsForm = ({ currentUser, setCurrentUser, setLogIn, setAllPosts }) =>
 
     const updateUserSettings = () => {
 
-        fetch('api/users/update', {
+        fetch('https://project-ritter.herokuapp.com/api/users/update', {
             method: 'PATCH',
             headers: { 'Content-Type': 'application/json', },
             body: JSON.stringify((settingsData))

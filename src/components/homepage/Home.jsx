@@ -18,7 +18,7 @@ const Home = ({ allPosts, setClickedUserPosts, currentUser }) => {
 
     const fetchClickedUserPosts = async (id) => {
         try {
-            let res = await fetch(`http://localhost:8000/api/posts/${id}`)
+            let res = await fetch(`https://project-ritter.herokuapp.com/api/posts/${id}`)
             let data = await res.json()
             navigate(path)
             return setClickedUserPosts(() => {
@@ -30,16 +30,7 @@ const Home = ({ allPosts, setClickedUserPosts, currentUser }) => {
 
     }
 
-    // useEffect(() => {
-    //     checkForPostData()
-    // }, [clickedUserPosts])
 
-    // const checkForPostData = () => {
-    //     if (clickedUserPosts) {
-    //         return navigate(path)
-    //     }
-    //     return
-    // }
     return (
         <>
 

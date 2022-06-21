@@ -16,7 +16,7 @@ const NewPostForm = ({ setAllPosts, currentUser, setShowModal }) => {
             userId: currentUser.user_id
         }
 
-        fetch('api/posts/create', {
+        fetch('https://project-ritter.herokuapp.com/api/posts/create', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(postCreationData)

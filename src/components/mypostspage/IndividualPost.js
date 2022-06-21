@@ -21,7 +21,7 @@ const IndividualPost = ({ myPosts, setAllPosts, setShowUpdatePostModal, setPostT
     }
 
     const deletePost = (id) => {
-        fetch(`api/posts/${id}`, {
+        fetch(`https://project-ritter.herokuapp.com/api/posts/${id}`, {
             method: 'DELETE',
             headers: { 'Content-Type': 'application/json' },
         })
@@ -36,7 +36,7 @@ const IndividualPost = ({ myPosts, setAllPosts, setShowUpdatePostModal, setPostT
     }
 
     const fetchPostToUpdate = (id) => {
-        fetch(`http://localhost:8000/api/singlepost/${id}`)
+        fetch(`https://project-ritter.herokuapp.com/api/singlepost/${id}`)
             .then(res => res.json())
             // .then(() => setShowUpdatePostModal(true))
             .then(data => {

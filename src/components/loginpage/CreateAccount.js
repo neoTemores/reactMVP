@@ -43,7 +43,7 @@ const CreateAccount = ({ setLoading, setShowLogin }) => {
     }
 
     const fetchAllUsers = async () => {
-        const res = await fetch('http://localhost:8000/api/users')
+        const res = await fetch('https://project-ritter.herokuapp.com/api/users')
         const data = await res.json()
         return checkForTakenUserName(data)
     }
@@ -63,7 +63,7 @@ const CreateAccount = ({ setLoading, setShowLogin }) => {
     function createNewUser() {
         setLoading(false)
 
-        fetch('api/users/create', {
+        fetch('https://project-ritter.herokuapp.com/api/users/create', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

@@ -14,7 +14,7 @@ const Login = ({ setLogIn, setCurrentUser, setShowLogin, setLoading }) => {
         e.preventDefault()
         // setLoading(true)
         const fetchAllUsers = async () => {
-            const res = await fetch('http://localhost:8000/api/users')
+            const res = await fetch('https://project-ritter.herokuapp.com/api/users')
             const data = await res.json()
             return authenticateInput(data)
         }

@@ -13,13 +13,14 @@ const Login = ({ setLogIn, setCurrentUser, setShowLogin, setLoading }) => {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        const fetchAllUsers = async () => {
-            const res = await fetch('/api/users')
-            const data = await res.json()
-            return authenticateInput(data)
-        }
+        setLoading(true)
         fetchAllUsers()
+    }
 
+    const fetchAllUsers = async () => {
+        const res = await fetch('/api/users')
+        const data = await res.json()
+        return authenticateInput(data)
     }
 
     const authenticateInput = (data) => {
@@ -27,6 +28,7 @@ const Login = ({ setLogIn, setCurrentUser, setShowLogin, setLoading }) => {
             const current = data[i];
             if (current.user_name === loginData.userName && current.password === loginData.password) {
 
+                setLoading(false)
                 setLogIn(true)
                 navigate('/')
                 return setCurrentUser(() => {
@@ -35,6 +37,7 @@ const Login = ({ setLogIn, setCurrentUser, setShowLogin, setLoading }) => {
             }
         }
 
+        setLoading(false)
         return alert('Unable to authenticate Username and Password.')
     }
 

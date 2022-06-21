@@ -12,7 +12,6 @@ const Login = ({ setLogIn, setCurrentUser, setShowLogin, setLoading }) => {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        // setLoading(true)
         const fetchAllUsers = async () => {
             const res = await fetch('https://project-ritter.herokuapp.com/api/users')
             const data = await res.json()
@@ -27,7 +26,6 @@ const Login = ({ setLogIn, setCurrentUser, setShowLogin, setLoading }) => {
             const current = data[i];
             if (current.user_name === loginData.userName && current.password === loginData.password) {
 
-                // setLoading(false)
                 setLogIn(true)
                 return setCurrentUser(() => {
                     return current

@@ -39,6 +39,7 @@ const DeleteButton = ({ currentUser, setLogIn, setAllPosts }) => {
         setAllPosts([])
         alert('Sorry to see you go! Your account has been deleted, goodbye.')
         setLogIn(false)
+        return window.location.reload()
     }
     return (
         <button className='deleteAccBtn' type='button' onClick={handleDelete}>DELETE Account</button>

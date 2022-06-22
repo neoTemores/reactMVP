@@ -52,9 +52,10 @@ const App = () => {
 
       <Navbar openModal={openModal} setCurrentUser={setCurrentUser} currentUser={currentUser} />
       {showModal ? <Modal setShowModal={setShowModal} setAllPosts={setAllPosts} currentUser={currentUser} /> : null}
-      <div className="App">
 
+      <div className="App">
         <Routes>
+
           <Route path='/' element={<Home allPosts={allPosts} setClickedUserPosts={setClickedUserPosts} currentUser={currentUser} />} />
           <Route exact path='/myPosts' element={<MyPosts currentUser={currentUser} allPosts={allPosts} setAllPosts={setAllPosts} />} />
           <Route exact path='/userPosts' element={<UserPosts clickedUserPosts={clickedUserPosts} />} />

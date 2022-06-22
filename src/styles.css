@@ -297,7 +297,7 @@ body {
   border: none;
   border: 3px solid darkgray;
   border-radius: 5px;
-  font-size: 2rem;
+  font-size: 1rem;
   color: darkolivegreen;
   font-family: fantasy;
 }
@@ -730,7 +730,7 @@ ul li:last-child {
   position: relative;
   left: 27px;
   top: -3px;
-  font-size: 2rem;
+  font-size: 1rem;
   color: darkolivegreen;
   font-family: fantasy;
 }

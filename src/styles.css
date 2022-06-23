@@ -43,11 +43,9 @@ body {
   width: 150px;
 }
 
-
+/* changed width, height, added padding */
 .loginContainer {
   z-index: 1;
-  width: 250px;
-  height: 300px;
   background: #9995;
   display: grid;
   align-content: center;
@@ -56,11 +54,18 @@ body {
   position: relative;
   animation: animate 0.3s;
   box-shadow: 10px 10px 10px black;
+  /* width: 250px;
+  height: 300px; */
+  width: fit-content;
+  height: fit-content;
+  padding: 2%;
+
 }
 
+/* comment out width, height */
 .loginForm {
-  width: 100%;
-  height: 100%;
+  /* width: 100%;
+  height: 100%; */
   display: grid;
 }
 
